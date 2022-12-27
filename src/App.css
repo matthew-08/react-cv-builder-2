@@ -1,0 +1,22 @@
+:root {
+  --black: #24252a;
+  --grey: #d3d3d3;
+  --white: #f8f8ff;
+  --main: #d04734;
+  --font-main: 'Titillium Web', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+.App {
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
