@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 export const ACTIONS = {
     // Personal Details
-    CREATE_WORKINPUT: 'create-work-input',
+    CREATE_EDUCATIONINPUT: 'create-education-input',
     CHANGE_FIRSTNAME: 'change-first-name',
     CHANGE_LASTNAME: 'change-last-name',
     CHANGE_JOB: 'change-job',
@@ -27,7 +27,7 @@ export const ACTIONS = {
 
 const reducer = (state, action) => {
     switch (action.type) {
-        case ACTIONS.CREATE_WORKINPUT:
+        case ACTIONS.CREATE_EDUCATIONINPUT:
             return { ...state, educationExperience: [...state.educationExperience, { id: uuidv4() }] }
         case ACTIONS.CHANGE_FIRSTNAME:
             return { ...state, personalDetails: { ...state.personalDetails, firstname: action.payload } }
@@ -54,15 +54,55 @@ const reducer = (state, action) => {
 
             }
         case ACTIONS.CHANGE_LOCATION:
-            return
+            return {
+                ...state,
+                educationExperience: state.educationExperience.map(exp => {
+                    if (exp.id === action.payload.id) {
+                        return { ...exp, location: action.payload.value }
+                    } return exp
+                })
+
+            }
         case ACTIONS.CHANGE_DEGREE:
-            return
+            return {
+                ...state,
+                educationExperience: state.educationExperience.map(exp => {
+                    if (exp.id === action.payload.id) {
+                        return { ...exp, degree: action.payload.value }
+                    } return exp
+                })
+
+            }
         case ACTIONS.CHANGE_GPA:
-            return
-        case CHANGE_FROM:
-            return
-        case CHANGE_TO:
-            return
+            return {
+                ...state,
+                educationExperience: state.educationExperience.map(exp => {
+                    if (exp.id === action.payload.id) {
+                        return { ...exp, GPA: action.payload.value }
+                    } return exp
+                })
+
+            }
+        case ACTIONS.CHANGE_FROM:
+            return {
+                ...state,
+                educationExperience: state.educationExperience.map(exp => {
+                    if (exp.id === action.payload.id) {
+                        return { ...exp, from: action.payload.value }
+                    } return exp
+                })
+
+            }
+        case ACTIONS.CHANGE_TO:
+            return {
+                ...state,
+                educationExperience: state.educationExperience.map(exp => {
+                    if (exp.id === action.payload.id) {
+                        return { ...exp, to: action.payload.value }
+                    } return exp
+                })
+
+            }
 
     }
 }
@@ -81,9 +121,21 @@ export default function CV({ inputStatus }) {
         },
         educationExperience: [{
             id: uuidv4(),
-            college: "",
-
+            college: '',
+            location: '',
+            degree: '',
+            GPA: '',
+            from: '',
+            to: '',
         }],
+        workExperience: [{
+            id: uuidv4(),
+            position: '',
+            company: '',
+            location: '',
+            from: '',
+            to: '',
+        }]
     })
 
     console.log(state)

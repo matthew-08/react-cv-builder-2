@@ -5,8 +5,38 @@
     display: flex;
     background-color: var(--grey);
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-    padding: 1.5rem 2.5rem;
     font-family: var(--font-main);
     box-sizing: border-box;
     flex-direction: column;
+}
+
+.cv-ouput {
+    padding: 1rem 1rem;
+}
+
+.cv-output-header {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--main);
+    padding: 1rem 1rem;
+    color: white;
+}
+
+.description {
+    font-size: 0.8rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 100;
+}
+
+
+.cv-output-header-right {
+    display: flex;
+    font-size: 0.8rem;
+    flex-direction: column;
+    max-width: 20%;
+    word-wrap: break-word;
+}
+
+main {
+    padding: 1rem 1rem;
 }
