@@ -1,0 +1,64 @@
+input {
+    padding: 0.5rem;
+    border: none;
+    font-family: var(--font-main);
+}
+
+
+.expcontainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.doublefield {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+}
+
+
+.doublefield input {
+    flex: 1;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.fields {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+textarea {
+    resize: none;
+    height: 80px;
+    font-family: var(--font-main);
+}
+
+.work-input-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.3rem;
+
+}
+
+.add-delete-button {
+    width: 100%;
+    padding: 0.4rem;
+    border-radius: 10px;
+    color: var(--black);
+    font-family: var(--main-font);
+    font-weight: 900;
+}
+
+.buttons-container {
+    margin-left: auto;
+    display: flex;
+    gap: 1rem;
+    width: fit-content;
+}
+
+.buttons-container button {
+    flex: 1;
+}
