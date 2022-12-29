@@ -2,8 +2,7 @@ import React from 'react'
 import styles from './CVinput.module.css'
 import { ACTIONS } from '../CV'
 
-export default function EducationExperience({ id, dispatch, state }) {
-    console.log(state)
+export default function EducationExperience({ id, dispatch, state, deleteButton }) {
 
     return (
         <div className={styles['work-input-container']}>
@@ -46,8 +45,15 @@ export default function EducationExperience({ id, dispatch, state }) {
                         }
                     />
                 </div>
-            </div>
 
+            </div>
+            {!deleteButton &&
+                <button
+                    className={styles['add-delete-button']}
+                    onClick={() => dispatch({ type: ACTIONS.DELETE_EDUCATION_EXPERIENCE, payload: { id } })}
+                >
+                    Delete
+                </button>}
         </div>
     )
 }

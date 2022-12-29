@@ -1,0 +1,34 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.edu-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid black;
+    min-height: 80px;
+}
+
+.edu-left,
+.edu-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.edu-left p:first-child {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.from-to {
+    display: flex;
+    gap: 1rem;
+}
+
+.edu-right p {
+    margin-left: auto;
+}

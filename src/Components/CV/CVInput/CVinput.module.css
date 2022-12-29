@@ -67,3 +67,10 @@ textarea {
 .container {
     padding: 1.5rem 2.5rem;
 }
+
+.work-input-container button {
+    width: 50px;
+    margin-left: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}

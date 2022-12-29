@@ -7,8 +7,10 @@ import { useReducer } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 
 export const ACTIONS = {
-    // Personal Details
+    // Create Inputs
     CREATE_EDUCATIONINPUT: 'create-education-input',
+    CREATE_WORKINPUT: 'create-work-input',
+    // Personal Details
     CHANGE_FIRSTNAME: 'change-first-name',
     CHANGE_LASTNAME: 'change-last-name',
     CHANGE_JOB: 'change-job',
@@ -23,12 +25,39 @@ export const ACTIONS = {
     CHANGE_GPA: 'change-GPA',
     CHANGE_FROM: 'change-from',
     CHANGE_TO: 'change-to',
+    // Work Experience
+    WORK_CHANGE_COMPANY: 'change-company',
+    WORK_CHANGE_POSITION: 'change-position',
+    WORK_CHANGE_LOCATION: 'change-work-location',
+    WORK_CHANGE_FROM: 'change-work-from',
+    WORK_CHANGE_TO: 'change-work-to',
+    //Delete inputs
+    DELETE_EDUCATION_EXPERIENCE: 'delete-education-exp',
+    DELETE_WORK_EXPERIENCE: 'delete-work-exp',
+    DELETE_EDUCATION_EXPERIENCE_LAST: 'delete-edu-exp-last',
+    DELETE_WORK_EXPERIENCE_LAST: 'delete-work-exp-last',
 }
 
 const reducer = (state, action) => {
     switch (action.type) {
+        case ACTIONS.DELETE_WORK_EXPERIENCE:
+            return { ...state, workExperience: state.workExperience.filter(f => f.id !== action.payload.id) }
+        case ACTIONS.DELETE_WORK_EXPERIENCE_LAST:
+            return {
+                ...state, workExperience: state.workExperience.filter((f, i) =>
+
+                    i !== state.educationExperience.length - 1)
+            }
+        case ACTIONS.DELETE_EDUCATION_EXPERIENCE_LAST:
+            return {
+                ...state, educationExperience: state.educationExperience.filter((f, i) => i !== state.educationExperience.length - 1)
+            }
+        case ACTIONS.DELETE_EDUCATION_EXPERIENCE:
+            return { ...state, educationExperience: state.educationExperience.filter(f => f.id !== action.payload.id) }
         case ACTIONS.CREATE_EDUCATIONINPUT:
             return { ...state, educationExperience: [...state.educationExperience, { id: uuidv4() }] }
+        case ACTIONS.CREATE_WORKINPUT:
+            return { ...state, workExperience: [...state.workExperience, { id: uuidv4() }] }
         case ACTIONS.CHANGE_FIRSTNAME:
             return { ...state, personalDetails: { ...state.personalDetails, firstname: action.payload } }
         case ACTIONS.CHANGE_LASTNAME:
@@ -103,9 +132,62 @@ const reducer = (state, action) => {
                 })
 
             }
+        case ACTIONS.WORK_CHANGE_COMPANY:
+            return {
+                ...state,
+                workExperience: state.workExperience.map(exp => {
+                    if (exp.id === action.payload.id) {
+                        return { ...exp, company: action.payload.value }
+                    }
+                    return exp
+                })
+            }
+        case ACTIONS.WORK_CHANGE_POSITION:
+            return {
+                ...state,
+                workExperience: state.workExperience.map(exp => {
+                    if (exp.id === action.payload.id) {
+                        return { ...exp, position: action.payload.value }
+                    }
+                    return exp
+                })
+            }
+        case ACTIONS.WORK_CHANGE_LOCATION:
+            return {
+                ...state,
+                workExperience: state.workExperience.map(exp => {
+                    if (exp.id === action.payload.id) {
+                        return { ...exp, location: action.payload.value }
+                    }
+                    return exp
+                })
+            }
+
+        case ACTIONS.WORK_CHANGE_FROM:
+            return {
+                ...state,
+                workExperience: state.workExperience.map(exp => {
+                    if (exp.id === action.payload.id) {
+                        return { ...exp, from: action.payload.value }
+                    }
+                    return exp
+                })
+            }
+        case ACTIONS.WORK_CHANGE_TO:
+            return {
+                ...state,
+                workExperience: state.workExperience.map(exp => {
+                    if (exp.id === action.payload.id) {
+                        return { ...exp, to: action.payload.value }
+                    }
+                    return exp
+                })
+            }
+
 
     }
 }
+
 
 export default function CV({ inputStatus }) {
     const [state, dispatch] = useReducer(reducer, {
